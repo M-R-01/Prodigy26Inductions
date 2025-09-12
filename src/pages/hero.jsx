@@ -6,7 +6,7 @@ const Hero = () => {
   const [rollNo, setRollNo] = useState("");
   const [year, setYear] = useState("");
 
-  const formRef = useRef(null); // ✅ form reference
+  const formRef = useRef(null);
 
   const scrollToForm = () => {
     if (formRef.current) {
@@ -17,12 +17,17 @@ const Hero = () => {
   const handleRollNoChange = (e) => {
     const value = e.target.value;
     setRollNo(value);
-
+    if (value.length == 0) {
+      setYear("");
+      return;
+    }
     if (value.length > 3 && value.substring(0, 3) !== "114") {
       alert("Only Production Engineering students are eligible for Inductions.");
-
+      setRollNo("");
+      setYear("");
+      return;
     }
-    if (value.length >= 9 && (value.substring(4, 6) === 24 || value.substring(4, 6) === 25)) {
+    if (value.length >= 9 && (value.substring(4, 6) === "24" || value.substring(4, 6) === "25")) {
       if (value.substring(4, 6) === "24") {
         setYear("2nd Year");
       } else if (value.substring(4, 6) === "25") {
@@ -30,6 +35,9 @@ const Hero = () => {
       }
     } else if (value.length >= 9 && (parseInt(value.substring(4, 6)) < 24)) {
       alert("Sorry, Inductions are not open for your batch.");
+      setRollNo("");
+      setYear("");
+      return;
     }
   };
 
@@ -86,12 +94,18 @@ This is your chance to be part of a passionate community that values creativity,
 
   <label>
     Preference 1
-    <select name="pref1" required>
+    <select name="pref2" required>
       <option value="">Select Team</option>
-      <option value="technical">Technical</option>
-      <option value="design">Design</option>
-      <option value="content">Content</option>
-      <option value="management">Management</option>
+      <option value="Organizing Committee">Organizing Committee</option>
+      <option value="Events">Events</option>
+      <option value="Design">Design</option>
+      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
+      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
+      <option value="Publicity">Publicity</option>
+      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
+      <option value="Webops">Webops</option>
+      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
     </select>
   </label>
 
@@ -99,21 +113,33 @@ This is your chance to be part of a passionate community that values creativity,
     Preference 2
     <select name="pref2" required>
       <option value="">Select Team</option>
-      <option value="technical">Technical</option>
-      <option value="design">Design</option>
-      <option value="content">Content</option>
-      <option value="management">Management</option>
+      <option value="Organizing Committee">Organizing Committee</option>
+      <option value="Events">Events</option>
+      <option value="Design">Design</option>
+      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
+      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
+      <option value="Publicity">Publicity</option>
+      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
+      <option value="Webops">Webops</option>
+      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
     </select>
   </label>
 
   <label>
     Preference 3
-    <select name="pref3" required>
+    <select name="pref2" required>
       <option value="">Select Team</option>
-      <option value="technical">Technical</option>
-      <option value="design">Design</option>
-      <option value="content">Content</option>
-      <option value="management">Management</option>
+      <option value="Organizing Committee">Organizing Committee</option>
+      <option value="Events">Events</option>
+      <option value="Design">Design</option>
+      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
+      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
+      <option value="Publicity">Publicity</option>
+      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
+      <option value="Webops">Webops</option>
+      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
     </select>
   </label>
 

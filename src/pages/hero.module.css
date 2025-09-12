@@ -6,7 +6,7 @@
   align-items: center;
   background: linear-gradient(-45deg, #ff9ce3, #9b5de5, #f15bb5, #6a00f4);
   background-size: 400% 400%;
-  animation: swirl 30s ease infinite;
+  animation: swirl 5s ease infinite;
   font-family: 'Poppins', sans-serif;
   color: #fff;
   
@@ -54,7 +54,7 @@
   color: #6a00f4;
   padding: 0.8rem 2rem;
   width: fit-content;
-
+  font-family: 'Asimovian', sans-serif;
   font-size: 1.2rem;
   border-radius: 0.8em;
   font-weight: bold;
@@ -69,7 +69,7 @@
 
 /* Form Section */
 .form {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(31, 4, 4, 0.2);
   border-radius: 1em;
   border: 9px solid #fff;
   padding: 2rem;
@@ -138,5 +138,9 @@
   }
   .hero p {
     font-size: 1rem;
+  }
+
+  .gridContainer {
+    grid-template-columns: 1fr;
   }
 }
