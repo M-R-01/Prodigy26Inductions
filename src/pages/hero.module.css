@@ -4,24 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #ff9ce3, #9b5de5, #f15bb5, #6a00f4);
-  background-size: 400% 400%;
-  animation: swirl 5s ease infinite;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  
-}
-
-@keyframes swirl {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .hero {
@@ -30,10 +14,24 @@
   align-items: center;
   font-family: 'Asimovian', sans-serif;
   justify-content: center;
-  text-align: center;
+  background-image: url('../assets/image-generator.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   height: 100vh;
-  padding: 1rem;
+  width: 100%;
+}
 
+.logoContainer {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .hero h1 {
@@ -59,11 +57,11 @@
   border-radius: 0.8em;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .registerBtn:hover {
-  background: #f15bb5;
+  background: #6a00f4;
   color: #fff;
 }
 

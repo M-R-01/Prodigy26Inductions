@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import styles from "./hero.module.css";
+import prodigy from "../assets/prodigy.png";
+import pea from "../assets/pea.png";
 
 const Hero = () => {
   const [formVisible, setFormVisible] = useState(false);
@@ -22,18 +24,23 @@ const Hero = () => {
       return;
     }
     if (value.length > 3 && value.substring(0, 3) !== "114") {
-      alert("Only Production Engineering students are eligible for Inductions.");
+      alert(
+        "Only Production Engineering students are eligible for Inductions."
+      );
       setRollNo("");
       setYear("");
       return;
     }
-    if (value.length >= 9 && (value.substring(4, 6) === "24" || value.substring(4, 6) === "25")) {
+    if (
+      value.length >= 9 &&
+      (value.substring(4, 6) === "24" || value.substring(4, 6) === "25")
+    ) {
       if (value.substring(4, 6) === "24") {
         setYear("2nd Year");
       } else if (value.substring(4, 6) === "25") {
         setYear("1st Year");
       }
-    } else if (value.length >= 9 && (parseInt(value.substring(4, 6)) < 24)) {
+    } else if (value.length >= 9 && parseInt(value.substring(4, 6)) < 24) {
       alert("Sorry, Inductions are not open for your batch.");
       setRollNo("");
       setYear("");
@@ -45,115 +52,153 @@ const Hero = () => {
     <div className={styles.page}>
       {/* Hero Section */}
       <div className={styles.hero}>
-        <h1>Prodigy Inductions 2025</h1>
-        <p>Prodigy is NIT Trichy’s premier student-driven innovation forum, bringing together creators, engineers, designers, and thinkers. We work across diverse domains — from technology and design to content and management — to build impactful projects and unforgettable experiences.
+        <div className={styles.logoContainer}>
+          <img src={prodigy} alt="Prodigy Logo" className={styles.logo} />
+          <img src={pea} alt="PEA Logo" className={styles.logo} />
+        </div>
 
-This is your chance to be part of a passionate community that values creativity, collaboration, and excellence.</p>
+        <h1>Prodigy Inductions 2025</h1>
+        <p>
+          Prodigy is NIT Trichy’s premier student-driven innovation forum,
+          bringing together creators, engineers, designers, and thinkers. We
+          work across diverse domains — from technology and design to content
+          and management — to build impactful projects and unforgettable
+          experiences. This is your chance to be part of a passionate community
+          that values creativity, collaboration, and excellence.
+        </p>
         <button
-            className={styles.registerBtn}
-            onClick={() => {
-              setFormVisible(true);
-              scrollToForm();
-            }}
-          >
-            Register Now
-          </button>
+          className={styles.registerBtn}
+          onClick={() => {
+            setFormVisible(true);
+            scrollToForm();
+          }}
+        >
+          Register Now
+        </button>
       </div>
 
       {/* Registration Form */}
-        <form ref={formRef} className={styles.form}>
-  <h2>Registration Form</h2>
+      <form ref={formRef} className={styles.form}>
+        <h2>Registration Form</h2>
 
-  <div className={styles.gridContainer}>
-    <label>
-      Name
-      <input type="text" name="name" required />
-    </label>
+        <div className={styles.gridContainer}>
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
 
-    <label>
-      Roll Number
-      <input
-        type="text"
-        name="rollno"
-        value={rollNo}
-        onChange={handleRollNoChange}
-        required
-      />
-    </label>
+          <label>
+            Roll Number
+            <input
+              type="text"
+              name="rollno"
+              value={rollNo}
+              onChange={handleRollNoChange}
+              required
+            />
+          </label>
 
-    <label>
-      Year
-      <input type="text" name="year" value={year} readOnly />
-    </label>
+          <label>
+            Year
+            <input type="text" name="year" value={year} readOnly />
+          </label>
 
-    <label>
-      Phone Number
-      <input type="text" name="phone" required />
-    </label>
-  </div>
+          <label>
+            Phone Number
+            <input type="text" name="phone" required />
+          </label>
+        </div>
 
-  <label>
-    Preference 1
-    <select name="pref2" required>
-      <option value="">Select Team</option>
-      <option value="Organizing Committee">Organizing Committee</option>
-      <option value="Events">Events</option>
-      <option value="Design">Design</option>
-      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
-      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
-      <option value="Publicity">Publicity</option>
-      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
-      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
-      <option value="Webops">Webops</option>
-      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
-    </select>
-  </label>
+        <label>
+          Preference 1
+          <select name="pref2" required>
+            <option value="">Select Team</option>
+            <option value="Organizing Committee">Organizing Committee</option>
+            <option value="Events">Events</option>
+            <option value="Design">Design</option>
+            <option value="Worskshop and Guest Lectures">
+              Workshop and Guest Lectures
+            </option>
+            <option value="Public Relations and Logistics">
+              Public Relations and Logistics
+            </option>
+            <option value="Publicity">Publicity</option>
+            <option value="Content and Quality Assurance">
+              Content and Quality Assurance
+            </option>
+            <option value="Marketing And Media Relations">
+              Marketing and Media Relations
+            </option>
+            <option value="Webops">Webops</option>
+            <option value="Alumni Relations and Conclave">
+              Alumni Relations and Conclave
+            </option>
+          </select>
+        </label>
 
-  <label>
-    Preference 2
-    <select name="pref2" required>
-      <option value="">Select Team</option>
-      <option value="Organizing Committee">Organizing Committee</option>
-      <option value="Events">Events</option>
-      <option value="Design">Design</option>
-      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
-      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
-      <option value="Publicity">Publicity</option>
-      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
-      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
-      <option value="Webops">Webops</option>
-      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
-    </select>
-  </label>
+        <label>
+          Preference 2
+          <select name="pref2" required>
+            <option value="">Select Team</option>
+            <option value="Organizing Committee">Organizing Committee</option>
+            <option value="Events">Events</option>
+            <option value="Design">Design</option>
+            <option value="Worskshop and Guest Lectures">
+              Workshop and Guest Lectures
+            </option>
+            <option value="Public Relations and Logistics">
+              Public Relations and Logistics
+            </option>
+            <option value="Publicity">Publicity</option>
+            <option value="Content and Quality Assurance">
+              Content and Quality Assurance
+            </option>
+            <option value="Marketing And Media Relations">
+              Marketing and Media Relations
+            </option>
+            <option value="Webops">Webops</option>
+            <option value="Alumni Relations and Conclave">
+              Alumni Relations and Conclave
+            </option>
+          </select>
+        </label>
 
-  <label>
-    Preference 3
-    <select name="pref2" required>
-      <option value="">Select Team</option>
-      <option value="Organizing Committee">Organizing Committee</option>
-      <option value="Events">Events</option>
-      <option value="Design">Design</option>
-      <option value="Worskshop and Guest Lectures">Workshop and Guest Lectures</option>
-      <option value="Public Relations and Logistics">Public Relations and Logistics</option>
-      <option value="Publicity">Publicity</option>
-      <option value="Content and Quality Assurance">Content and Quality Assurance</option>
-      <option value="Marketing And Media Relations">Marketing and Media Relations</option>
-      <option value="Webops">Webops</option>
-      <option value="Alumni Relations and Conclave">Alumni Relations and Conclave</option>
-    </select>
-  </label>
+        <label>
+          Preference 3
+          <select name="pref2" required>
+            <option value="">Select Team</option>
+            <option value="Organizing Committee">Organizing Committee</option>
+            <option value="Events">Events</option>
+            <option value="Design">Design</option>
+            <option value="Worskshop and Guest Lectures">
+              Workshop and Guest Lectures
+            </option>
+            <option value="Public Relations and Logistics">
+              Public Relations and Logistics
+            </option>
+            <option value="Publicity">Publicity</option>
+            <option value="Content and Quality Assurance">
+              Content and Quality Assurance
+            </option>
+            <option value="Marketing And Media Relations">
+              Marketing and Media Relations
+            </option>
+            <option value="Webops">Webops</option>
+            <option value="Alumni Relations and Conclave">
+              Alumni Relations and Conclave
+            </option>
+          </select>
+        </label>
 
-  <label>
-    Why do you want to be a part of Prodigy?
-    <textarea name="reason" rows="4" required></textarea>
-  </label>
+        <label>
+          Why do you want to be a part of Prodigy?
+          <textarea name="reason" rows="4" required></textarea>
+        </label>
 
-  <button type="submit" className={styles.submitBtn}>
-    Submit
-  </button>
-</form>
-
-      
+        <button type="submit" className={styles.submitBtn}>
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
