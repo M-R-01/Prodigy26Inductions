@@ -1,51 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./hero.module.css";
+import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from 'framer-motion';
 import prodigy from "../assets/prodigy.png";
 import pea from "../assets/pea.png";
 
 const Hero = () => {
-  const [formVisible, setFormVisible] = useState(false);
-  const [rollNo, setRollNo] = useState("");
-  const [year, setYear] = useState("");
+  const [expanding, setExpanding] = useState(false);
+  const navigate = useNavigate();
 
-  const formRef = useRef(null);
-
-  const scrollToForm = () => {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleRollNoChange = (e) => {
-    const value = e.target.value;
-    setRollNo(value);
-    if (value.length == 0) {
-      setYear("");
-      return;
-    }
-    if (value.length > 3 && value.substring(0, 3) !== "114") {
-      alert(
-        "Only Production Engineering students are eligible for Inductions."
-      );
-      setRollNo("");
-      setYear("");
-      return;
-    }
-    if (
-      value.length >= 9 &&
-      (value.substring(4, 6) === "24" || value.substring(4, 6) === "25")
-    ) {
-      if (value.substring(4, 6) === "24") {
-        setYear("2nd Year");
-      } else if (value.substring(4, 6) === "25") {
-        setYear("1st Year");
-      }
-    } else if (value.length >= 9 && parseInt(value.substring(4, 6)) < 24) {
-      alert("Sorry, Inductions are not open for your batch.");
-      setRollNo("");
-      setYear("");
-      return;
-    }
+  const handleClick = () => {
+    setExpanding(true);
+    setTimeout(() => {
+      navigate("/register"); // navigate after animation
+    }, 1500); // match animation duration
   };
 
   return (
@@ -69,136 +37,34 @@ const Hero = () => {
         <button
           className={styles.registerBtn}
           onClick={() => {
-            setFormVisible(true);
-            scrollToForm();
+            handleClick();
           }}
         >
           Register Now
         </button>
+
+        <AnimatePresence>
+        {expanding && (
+          <motion.div
+            initial={{ scale: 0, borderRadius: "50%" }}
+            animate={{ scale: 100, borderRadius: "50%" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            style={{
+              position: "fixed",
+              top: "88%",
+              left: "50%",
+              width: "20px",
+              height: "20px",
+              border: "2px solid #6a00f4",
+              backgroundColor: "#121212",
+              transform: "translate(-50%, -50%)",
+              zIndex: 3,
+            }}
+          />
+        )}
+      </AnimatePresence>
       </div>
-
-      {/* Registration Form */}
-      <form ref={formRef} className={styles.form}>
-        <h2>Registration Form</h2>
-
-        <div className={styles.gridContainer}>
-          <label>
-            Name
-            <input type="text" name="name" required />
-          </label>
-
-          <label>
-            Roll Number
-            <input
-              type="text"
-              name="rollno"
-              value={rollNo}
-              onChange={handleRollNoChange}
-              required
-            />
-          </label>
-
-          <label>
-            Year
-            <input type="text" name="year" value={year} readOnly />
-          </label>
-
-          <label>
-            Phone Number
-            <input type="text" name="phone" required />
-          </label>
-        </div>
-
-        <label>
-          Preference 1
-          <select name="pref2" required>
-            <option value="">Select Team</option>
-            <option value="Organizing Committee">Organizing Committee</option>
-            <option value="Events">Events</option>
-            <option value="Design">Design</option>
-            <option value="Worskshop and Guest Lectures">
-              Workshop and Guest Lectures
-            </option>
-            <option value="Public Relations and Logistics">
-              Public Relations and Logistics
-            </option>
-            <option value="Publicity">Publicity</option>
-            <option value="Content and Quality Assurance">
-              Content and Quality Assurance
-            </option>
-            <option value="Marketing And Media Relations">
-              Marketing and Media Relations
-            </option>
-            <option value="Webops">Webops</option>
-            <option value="Alumni Relations and Conclave">
-              Alumni Relations and Conclave
-            </option>
-          </select>
-        </label>
-
-        <label>
-          Preference 2
-          <select name="pref2" required>
-            <option value="">Select Team</option>
-            <option value="Organizing Committee">Organizing Committee</option>
-            <option value="Events">Events</option>
-            <option value="Design">Design</option>
-            <option value="Worskshop and Guest Lectures">
-              Workshop and Guest Lectures
-            </option>
-            <option value="Public Relations and Logistics">
-              Public Relations and Logistics
-            </option>
-            <option value="Publicity">Publicity</option>
-            <option value="Content and Quality Assurance">
-              Content and Quality Assurance
-            </option>
-            <option value="Marketing And Media Relations">
-              Marketing and Media Relations
-            </option>
-            <option value="Webops">Webops</option>
-            <option value="Alumni Relations and Conclave">
-              Alumni Relations and Conclave
-            </option>
-          </select>
-        </label>
-
-        <label>
-          Preference 3
-          <select name="pref2" required>
-            <option value="">Select Team</option>
-            <option value="Organizing Committee">Organizing Committee</option>
-            <option value="Events">Events</option>
-            <option value="Design">Design</option>
-            <option value="Worskshop and Guest Lectures">
-              Workshop and Guest Lectures
-            </option>
-            <option value="Public Relations and Logistics">
-              Public Relations and Logistics
-            </option>
-            <option value="Publicity">Publicity</option>
-            <option value="Content and Quality Assurance">
-              Content and Quality Assurance
-            </option>
-            <option value="Marketing And Media Relations">
-              Marketing and Media Relations
-            </option>
-            <option value="Webops">Webops</option>
-            <option value="Alumni Relations and Conclave">
-              Alumni Relations and Conclave
-            </option>
-          </select>
-        </label>
-
-        <label>
-          Why do you want to be a part of Prodigy?
-          <textarea name="reason" rows="4" required></textarea>
-        </label>
-
-        <button type="submit" className={styles.submitBtn}>
-          Submit
-        </button>
-      </form>
     </div>
   );
 };
