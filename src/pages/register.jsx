@@ -63,7 +63,12 @@ const steps = [
   <>
     <label className={styles.label}>
       Why do you want to be a part of Prodigy?
-      <textarea className={styles.textarea} name="reason" rows="4" required></textarea>
+      <textarea
+        className={styles.textarea}
+        name="reason"
+        rows="4"
+        required
+      ></textarea>
     </label>
   </>,
 ];
@@ -85,29 +90,32 @@ const Register = () => {
       <form className={styles.form}>
         {/* Step container with animation */}
         <div className={styles.stepContainer}>
-        <AnimatePresence mode="wait">
-          {hasAnimated ? (
+          <AnimatePresence mode="wait">
             <motion.div
               key={step}
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               className={styles.step}
             >
               {steps[step]}
             </motion.div>
-          ) : (
-            <div key={step} className={styles.step}>
-              {steps[step]}
-            </div>
-          )}
-        </AnimatePresence>
-      </div>
+          </AnimatePresence>
+        </div>
+
+        <button type="submit" className={`${styles.submitBtn} ${step === steps.length - 1 ? styles.active : ""}`} enabled={step === steps.length - 1}>
+          Submit
+        </button>
 
         {/* Navigation */}
         <div className={styles.nav}>
-          <button type="button" onClick={prevStep} disabled={step === 0} className={styles.prevBtn}>
+          <button
+            type="button"
+            onClick={prevStep}
+            disabled={step === 0}
+            className={styles.prevBtn}
+          >
             ⬅
           </button>
           <div className={styles.dots}>
@@ -118,15 +126,10 @@ const Register = () => {
               />
             ))}
           </div>
-          {step === steps.length - 1 ? (
-            <button type="submit" className={styles.submitBtn}>
-              Submit
-            </button>
-          ) : (
-            <button type="button" onClick={nextStep} className={styles.nextBtn}>
-              ➡
-            </button>
-          )}
+
+          <button type="button" onClick={nextStep} className={styles.nextBtn}>
+            ➡
+          </button>
         </div>
       </form>
     </div>
