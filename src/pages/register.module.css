@@ -22,14 +22,15 @@
   padding: 2rem;
   width: 100%;
   max-width: 600px; /* keeps it neat on desktop */
-  min-height: 25rem;
   margin: 2rem auto;
+  min-height: 425px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 1rem;
   backdrop-filter: blur(8px);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.8s ease-in-out;
 }
 
 /* Labels and inputs */
@@ -48,10 +49,12 @@
   width: 96%;
   padding: 0.7rem;
   border-radius: 0.5em;
-  border: none;
+  border: 2px solid #6a00f4;
+  min-width: 50px;
   outline: none;
   font-size: 1rem;
   color: #6a00f4;
+  background: #9882AC;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -75,7 +78,6 @@
 
 /* Navigation */
 .nav {
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,9 +91,9 @@
   width: 50px;
   height: 50px;
   background: #6a00f4;
-  color: #fff;
+  color: #121212;
   padding: 0.8rem;
-  border: none;
+  border: 1px solid #6a00f4;
   border-radius: 50%;
   cursor: pointer;
   font-size: 1rem;
@@ -101,28 +103,26 @@
 
 .prevBtn:hover,
 .nextBtn:hover {
-  background: #f15bb5;
+  background: #2b2a2ad9;
+  color: #6a00f4;
 }
 
 .submitBtn {
   background: #6a00f4;
   color: #fff;
   padding: 0.8rem 1.5rem;
-  border: none;
+  border: 3px solid #6a00f4;
   border-radius: 1em;
+  align-self: flex-end;
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
   transition: background 0.3s ease;
-  opacity: 0;
 }
 
 .submitBtn:hover {
-  background: #f15bb5;
-}
-
-.submitBtn.active {
-  opacity: 1;
+  color: #6a00f4;
+  background: #2b2a2ad9;
 }
 
 /* Dots */
@@ -148,7 +148,7 @@
 @media (max-width: 600px) {
   .form {
     padding: 1rem;
-    width: 90%;
+    width: 80%;
   }
 
   .nav {
