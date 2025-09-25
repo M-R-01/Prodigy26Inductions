@@ -13,12 +13,11 @@ const Hero = () => {
     setExpanding(true);
     setTimeout(() => {
       navigate("/register"); // navigate after animation
-    }, 1500); // match animation duration
+    }, 1700); // match animation duration
   };
 
   return (
     <div className={styles.page}>
-      {/* Hero Section */}
       <div className={styles.hero}>
         <div className={styles.logoContainer}>
           <img src={prodigy} alt="Prodigy Logo" className={styles.logo} />

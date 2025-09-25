@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import styles from "./register.module.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  
   const [step, setStep] = useState(0);
 
   const [name, setName] = useState("");
@@ -51,6 +53,7 @@ const Register = () => {
       .then((response) => response.text())
       .then((data) => {
         alert("Thank you for applying! We will get back to you soon.");
+        navigate("/"); // redirect to home page after submission
       })
       .catch((error) => console.error(error));
   };
@@ -83,18 +86,6 @@ const Register = () => {
       </label>
 
       <label className={styles.label}>
-        Year
-        <input
-          className={styles.input}
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          type="text"
-          name="year"
-          readOnly
-        />
-      </label>
-
-      <label className={styles.label}>
         Roll Number
         <input
           className={styles.input}
@@ -103,6 +94,18 @@ const Register = () => {
           name="rollno"
           required
           onChange={(e) => handleRollNumberChange(e.target.value)}
+        />
+      </label>
+
+      <label className={styles.label}>
+        Year
+        <input
+          className={styles.input}
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          type="text"
+          name="year"
+          readOnly
         />
       </label>
     </>,
@@ -118,8 +121,15 @@ const Register = () => {
           required
         >
           <option value="">Select Team</option>
+          <option value="Organizing Committee">Organizing Committee</option>
           <option value="Events">Events</option>
           <option value="Design">Design</option>
+          <option value="Workshops and Guest Lectures">Workshops and Guest Lectures</option>
+          <option value="Marketing and Media Relations">Marketing and Media Relations</option>
+          <option value="Publicity">Publicity</option>
+          <option value="Public Relations">Public Relations</option>
+          <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+          <option value="Alumni Relations">Alumni Relations</option>
           <option value="Webops">Webops</option>
         </select>
       </label>
@@ -134,8 +144,15 @@ const Register = () => {
           required
         >
           <option value="">Select Team</option>
+          <option value="Organizing Committee">Organizing Committee</option>
           <option value="Events">Events</option>
           <option value="Design">Design</option>
+          <option value="Workshops and Guest Lectures">Workshops and Guest Lectures</option>
+          <option value="Marketing and Media Relations">Marketing and Media Relations</option>
+          <option value="Publicity">Publicity</option>
+          <option value="Public Relations">Public Relations</option>
+          <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+          <option value="Alumni Relations">Alumni Relations</option>
           <option value="Webops">Webops</option>
         </select>
       </label>
@@ -150,8 +167,15 @@ const Register = () => {
           required
         >
           <option value="">Select Team</option>
+          <option value="Organizing Committee">Organizing Committee</option>
           <option value="Events">Events</option>
           <option value="Design">Design</option>
+          <option value="Workshops and Guest Lectures">Workshops and Guest Lectures</option>
+          <option value="Marketing and Media Relations">Marketing and Media Relations</option>
+          <option value="Publicity">Publicity</option>
+          <option value="Public Relations">Public Relations</option>
+          <option value="Content and Quality Assurance">Content and Quality Assurance</option>
+          <option value="Alumni Relations">Alumni Relations</option>
           <option value="Webops">Webops</option>
         </select>
       </label>
@@ -234,6 +258,7 @@ const Register = () => {
           >
             <FaArrowLeft />
           </button>
+          
           <div className={styles.dots}>
             {steps.map((_, i) => (
               <span

@@ -46,17 +46,41 @@
 .select,
 .textarea {
   margin-top: 0.5rem;
-  width: 96%;
+  width: 100%;              /* take full width of parent */
   padding: 0.7rem;
   border-radius: 0.5em;
   border: 2px solid #6a00f4;
-  min-width: 50px;
   outline: none;
   font-size: 1rem;
   color: #6a00f4;
   background: #9882AC;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;   /* ensures padding/border don’t push width */
 }
+
+.select {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 2.2rem 0.7rem 0.7rem; /* extra right padding */
+  border-radius: 0.5em;
+  border: 2px solid #6a00f4;
+  outline: none;
+  font-size: 1rem;
+  color: #6a00f4;
+  background: #9882AC;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+
+  /* make arrow styling consistent */
+  appearance: none;          /* for Chrome, Safari, Edge */
+  -moz-appearance: none;     /* for Firefox */
+  -webkit-appearance: none;  /* for Safari iOS */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%236a00f4' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center; /* positions arrow */
+  background-size: 1rem;
+}
+
 
 /* Step container */
 .stepContainer {
@@ -91,13 +115,14 @@
   width: 50px;
   height: 50px;
   background: #6a00f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #121212;
-  padding: 0.8rem;
-  border: 1px solid #6a00f4;
+  border: 2px solid #6a00f4;
   border-radius: 50%;
+  padding: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
   transition: background 0.3s ease;
 }
 
